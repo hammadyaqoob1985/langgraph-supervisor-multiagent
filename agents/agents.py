@@ -5,7 +5,9 @@ from langgraph.prebuilt import create_react_agent
 
 from config.config import llm
 from tools.tools import check_availability_by_doctor, check_availability_by_specialization, set_appointment, \
-    cancel_appointment, reschedule_appointment, retrieve_doctor_information
+    cancel_appointment, reschedule_appointment, retrieve_doctor_information, check_availability_by_doctor_by_date, \
+    check_availability_by_specialization_by_date
+
 
 def create_agent(llm:ChatOpenAI,tools:list,system_prompt:str):
     system_prompt = ChatPromptTemplate.from_messages(
@@ -22,8 +24,8 @@ def create_agent(llm:ChatOpenAI,tools:list,system_prompt:str):
 
 information_agent = create_agent(
     llm=llm,
-    tools=[check_availability_by_doctor,check_availability_by_specialization],
-    system_prompt = "You are specialized agent to provide information related to availbility of doctors or any FAQs related to hospital based on the query. You have access to the tool.\n Make sure to ask user politely if you need any further information to execute the tool.\n For your information, Always consider current year is 2024."
+    tools=[check_availability_by_doctor,check_availability_by_specialization,check_availability_by_doctor_by_date,check_availability_by_specialization_by_date],
+    system_prompt = "You are specialized agent to provide information related to availability of doctors. You have access to the tool.\n Make sure to ask user politely if you need any further information to execute the tool.\n For your information, Always consider current year is 2024."
 )
 
 booking_agent = create_agent(

@@ -7,11 +7,57 @@ from langchain_core.tools import tool, create_retriever_tool
 from config.config import faiss_db
 from model.schema import DateModel, DateTimeModel, IdentificationNumberModel
 
-
 @tool
-def check_availability_by_doctor(desired_date:DateModel, doctor_name:Literal['kevin anderson','robert martinez','susan davis','daniel miller','sarah wilson','michael green','lisa brown','jane smith','emily johnson','john doe']):
+def check_availability_by_doctor(doctor_name:Literal['kevin anderson','robert martinez','susan davis','daniel miller','sarah wilson','michael green','lisa brown','jane smith','emily johnson','john doe']):
     """
     Checking the database if we have availability for the specific doctor.
+    The parameters should be mentioned by the user in the query
+    """
+    df = pd.read_csv(f"availability.csv")
+    rows = list(df[(df['doctor_name'] == doctor_name)&(df['is_available'] == True)]['date_slot'])
+
+    if len(rows) == 0:
+        output = "No availability in the entire day"
+    else:
+        output = "Available slots: " + ', '.join(rows)
+
+    return output
+
+@tool
+def check_availability_by_specialization(specialization:Literal["general_dentist", "cosmetic_dentist", "prosthodontist", "pediatric_dentist","emergency_dentist","oral_surgeon","orthodontist"]):
+    """
+    Checking the database if we have availability for the specific specialization.
+    The parameters should be mentioned by the user in the query
+    """
+    #Dummy data
+    df = pd.read_csv(f"availability.csv")
+    rows = df[(df['specialization'] == specialization) & (df['is_available'] == True)].groupby(['specialization', 'doctor_name'])['date_slot'].apply(list).reset_index(name='available_slots')
+
+    if len(rows) == 0:
+        output = "No availability in the entire day"
+    else:
+        def convert_to_am_pm(time_str):
+            # Split the time string into hours and minutes
+            time_str = str(time_str)
+            hours, minutes = map(int, time_str.split("."))
+
+            # Determine AM or PM
+            period = "AM" if hours < 12 else "PM"
+
+            # Convert hours to 12-hour format
+            hours = hours % 12 or 12
+
+            # Format the output
+            return f"{hours}:{minutes:02d} {period}"
+        for row in rows.values:
+            output = row[1] + ". Available slots: \n" + ', \n'.join([value for value in row[2]])+'\n'
+
+    return output
+
+@tool
+def check_availability_by_doctor_by_date(desired_date:DateModel, doctor_name:Literal['kevin anderson','robert martinez','susan davis','daniel miller','sarah wilson','michael green','lisa brown','jane smith','emily johnson','john doe']):
+    """
+    Checking the database if we have availability for the specific doctor  date.
     The parameters should be mentioned by the user in the query
     """
     df = pd.read_csv(f"availability.csv")
@@ -27,9 +73,9 @@ def check_availability_by_doctor(desired_date:DateModel, doctor_name:Literal['ke
     return output
 
 @tool
-def check_availability_by_specialization(desired_date:DateModel, specialization:Literal["general_dentist", "cosmetic_dentist", "prosthodontist", "pediatric_dentist","emergency_dentist","oral_surgeon","orthodontist"]):
+def check_availability_by_specialization_by_date(desired_date:DateModel, specialization:Literal["general_dentist", "cosmetic_dentist", "prosthodontist", "pediatric_dentist","emergency_dentist","oral_surgeon","orthodontist"]):
     """
-    Checking the database if we have availability for the specific specialization.
+    Checking the database if we have availability for the specific specialization given a date.
     The parameters should be mentioned by the user in the query
     """
     #Dummy data

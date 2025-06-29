@@ -1,19 +1,19 @@
-John Doe: MD, PhD, Board Certified in Internal Medicine. Graduated from Harvard Medical School. 15 years of clinical experience. Specializes in chronic disease management and preventive care.
+John Doe: MD, PhD, Board Certified in Dentistry. Graduated from Harvard Medical School. 15 years of clinical experience. Specializes in chronic disease management and preventive care.
 
-Emily Johnson: MD, Board Certified in Pediatrics. Graduated from Stanford University School of Medicine. 10 years of experience in pediatric care and adolescent medicine.
+Emily Johnson: MD, Board Certified in Dentistry. Graduated from Stanford University School of Medicine. 10 years of experience in pediatric care and adolescent medicine.
 
-Jane Smith: DO, Board Certified in Family Medicine. Graduated from Johns Hopkins University. 12 years of experience in family and community health.
+Jane Smith: DO, Board Certified in Cosmestic Dentistry. Graduated from Johns Hopkins University. 12 years of experience in family and community health.
 
-Lisa Brown: MD, Board Certified in Cardiology. Graduated from Yale School of Medicine. 14 years of experience in cardiovascular medicine and research.
+Lisa Brown: MD, Board Certified in Cosmestic Dentistry. Graduated from Yale School of Medicine. 14 years of experience in cardiovascular medicine and research.
 
-Michael Green: MD, Board Certified in Neurology. Graduated from Columbia University College of Physicians and Surgeons. 11 years of experience in neurology and neurodegenerative disorders.
+Michael Green: MD, Board Certified in Prosthodontistry. Graduated from Columbia University College of Physicians and Surgeons. 11 years of experience in neurology and neurodegenerative disorders.
 
-Sarah Wilson: MD, Board Certified in Obstetrics and Gynecology. Graduated from University of California, San Francisco. 13 years of experience in women's health and reproductive medicine.
+Sarah Wilson: MD, Board Certified in Pediatric Dentistry. Graduated from University of California, San Francisco. 13 years of experience in women's health and reproductive medicine.
 
-Daniel Miller: MD, Board Certified in Emergency Medicine. Graduated from University of Michigan Medical School. 9 years of experience in emergency and trauma care.
+Daniel Miller: MD, Board Certified in Emergency Dentistry. Graduated from University of Michigan Medical School. 9 years of experience in emergency and trauma care.
 
-Susan Davis: MD, Board Certified in Psychiatry. Graduated from Duke University School of Medicine. 16 years of experience in adult and adolescent psychiatry.
+Susan Davis: MD, Board Certified in Emergency Dentistry. Graduated from Duke University School of Medicine. 16 years of experience in adult and adolescent psychiatry.
 
-Robert Martinez: MD, Board Certified in Orthopedic Surgery. Graduated from University of Pennsylvania Perelman School of Medicine. 18 years of experience in orthopedic surgery and sports medicine.
+Robert Martinez: MD, Board Certified in Oral Surgery. Graduated from University of Pennsylvania Perelman School of Medicine. 18 years of experience in orthopedic surgery and sports medicine.
 
-Kevin Anderson: MD, Board Certified in Dermatology. Graduated from Northwestern University Feinberg School of Medicine. 8 years of experience in dermatology and skin cancer treatment.
+Kevin Anderson: MD, Board Certified in Orthodontory. Graduated from Northwestern University Feinberg School of Medicine. 8 years of experience in dermatology and skin cancer treatment.
