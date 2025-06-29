@@ -106,6 +106,21 @@ def check_availability_by_specialization_by_date(desired_date:DateModel, special
     return output
 
 ## Tools For Booking agent
+
+@tool
+def get_appointments(id_number:IdentificationNumberModel):
+    """
+    Fetch bookings for a patient with an identification number.
+    The parameters MUST be mentioned by the user in the query.
+    """
+    #Dummy data
+    df = pd.read_csv(f'availability.csv')
+    bookings = df[(df['patient_to_attend'] == id_number.id)]
+    if len(bookings) == 0:
+        return "Not bookings found"
+    else:
+        return bookings
+
 @tool
 def reschedule_appointment(old_date:DateTimeModel, new_date:DateTimeModel, id_number:IdentificationNumberModel, doctor_name:Literal['kevin anderson','robert martinez','susan davis','daniel miller','sarah wilson','michael green','lisa brown','jane smith','emily johnson','john doe']):
     """
