@@ -1,12 +1,13 @@
 from langchain_core.messages import HumanMessage
-
 from graph.graph import graph
 
 
 def main():
     inputs = [
-        HumanMessage(content='Can you tell me about the doctors in the system?')
+        HumanMessage(content='Can you tell me about the qualification of the doctor Michael Green?')
     ]
+
+
 
     config = {"configurable": {"thread_id": "1", "recursion_limit": 10}}
 

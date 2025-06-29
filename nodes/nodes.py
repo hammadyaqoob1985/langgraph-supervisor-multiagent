@@ -5,10 +5,12 @@ from langgraph.constants import END
 from langgraph.types import Command
 
 from agents.AgentState import GraphState
-from agents.agents import information_agent, booking_agent
+from agents.agents import information_agent, booking_agent, doctor_profile_agent
 from config.config import llm
 
-members_dict = {'information_node':'specialized agent to provide information related to availbility of doctors or any FAQs related to hospital.','booking_node':'specialized agent to only to book, cancel or reschedule appointment'}
+members_dict = {'information_node':'specialized agent to provide information related to availbility of doctors or any FAQs related to hospital.'
+    ,'booking_node':'specialized agent to only to book, cancel or reschedule appointment'
+                ,'doctor_profile_node':'specialized agent to provide information related to credentials and background information regarding the doctors.'}
 options = list(members_dict.keys()) + ["FINISH"]
 worker_info = '\n\n'.join([f'WORKER: {member} \nDESCRIPTION: {description}' for member, description in members_dict.items()]) + '\n\nWORKER: FINISH \nDESCRIPTION: If User Query is answered and route to Finished'
 
@@ -48,6 +50,17 @@ def booking_node(state: GraphState):
         update={
             "messages": state["messages"] + [
                 AIMessage(content=result["messages"][-1].content, name="booking_node")
+            ]
+        },
+        goto="supervisor",
+    )
+
+def doctor_profile_node(state: GraphState):
+    result = doctor_profile_agent.invoke(state)
+    return Command(
+        update={
+            "messages": state["messages"] + [
+                AIMessage(content=result["messages"][-1].content, name="doctor_profile_node")
             ]
         },
         goto="supervisor",

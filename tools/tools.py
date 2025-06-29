@@ -2,8 +2,9 @@
 from typing import Literal
 
 import pandas as pd
-from langchain_core.tools import tool
+from langchain_core.tools import tool, create_retriever_tool
 
+from config.config import faiss_db
 from model.schema import DateModel, DateTimeModel, IdentificationNumberModel
 
 
@@ -116,3 +117,28 @@ def set_appointment(desired_date:DateTimeModel, id_number:IdentificationNumberMo
         df.to_csv(f'availability.csv', index = False)
 
         return "Succesfully done"
+
+# Remove embedding/index creation from here. Instead, expect a setter to inject the FAISS db at runtime.
+# _faiss_db = None
+
+# def set_faiss_db(faiss_db):
+#     global _faiss_db
+#     _faiss_db = faiss_db
+
+retrieve_doctor_information = create_retriever_tool(
+    faiss_db.as_retriever(),
+    "doctor_information_retriever",
+    "Fetches background and credentials about doctors.",
+)
+# @tool
+# def retrieve_doctor_information(query: str):
+#     """
+#     Retrieve relevant information from the local knowledge base using OpenAI embeddings and FAISS vector search.
+#     """
+#     if _faiss_db is None:
+#         return "Knowledge base is not initialized."
+#     results = _faiss_db.similarity_search(query, k=3)
+#     if not results:
+#         return "No relevant information found in the knowledge base."
+#     return '\n'.join([r.page_content for r in results])
+
