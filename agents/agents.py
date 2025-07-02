@@ -31,7 +31,11 @@ information_agent = create_agent(
 booking_agent = create_agent(
     llm=llm,
     tools=[set_appointment,cancel_appointment,reschedule_appointment, get_appointments],
-    system_prompt = "You are specialized agent to set, cancel, reschedule or get appointment based on the query. You have access to the tool.\n Make sure to ask user politely if you need any further information to execute the tool.\n For your information, Always consider current year is 2024."
+    system_prompt = """You are specialized agent who has access to appointments for all customers
+    You are able to get, set, cancel and reschedule appointments based on the query.
+    You have access to the tool.
+    \n Make sure to ask user politely 
+    if you need any further information to execute the tool.\n For your information, Always consider current year is 2024."""
 )
 
 doctor_profile_agent = create_agent(

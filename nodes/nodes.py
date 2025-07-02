@@ -9,7 +9,7 @@ from agents.agents import information_agent, booking_agent, doctor_profile_agent
 from config.config import llm
 
 members_dict = {'information_node':'specialized agent to provide information related to availability of doctors.\n Make sure to ask user politely if you need any further information to execute the tool.'
-    ,'booking_node':'specialized agent to only to book, cancel, reschedule or get appointments'
+    ,'booking_node':'specialized agent to only to book, cancel, reschedule or get appointments given a user id'
                 ,'doctor_profile_node':'specialized agent to provide information related to credentials and background information regarding the doctors and their specialisation. Use this agent when user has general faqs about the doctors in the hospital'}
 options = list(members_dict.keys()) + ["FINISH"]
 worker_info = '\n\n'.join([f'WORKER: {member} \nDESCRIPTION: {description}' for member, description in members_dict.items()]) + '\n\nWORKER: FINISH \nDESCRIPTION: If User Query is answered and route to Finished'
