@@ -1267,7 +1267,7 @@ date_slot,specialization,doctor_name,is_available,patient_to_attend
 02-09-2024 16.30,cosmetic_dentist,jane smith,True,
 03-09-2024 8.00,cosmetic_dentist,jane smith,True,
 03-09-2024 8.30,cosmetic_dentist,jane smith,True,
-03-09-2024 9.00,cosmetic_dentist,jane smith,True,
+03-09-2024 9.00,cosmetic_dentist,jane smith,False,10232303.0
 03-09-2024 9.30,cosmetic_dentist,jane smith,True,
 03-09-2024 10.00,cosmetic_dentist,jane smith,True,
 03-09-2024 10.30,cosmetic_dentist,jane smith,True,

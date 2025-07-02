@@ -63,7 +63,7 @@ def check_availability_by_doctor_by_date(desired_date:DateModel, doctor_name:Lit
     """
     df = pd.read_csv(f"availability.csv")
     df['date_slot_time'] = df['date_slot'].apply(lambda input: input.split(' ')[-1])
-    rows = list(df[(df['date_slot'].apply(lambda input: input.split(' ')[0]) == convert_datetime_format(desired_date.date))&(df['doctor_name'] == doctor_name)&(df['is_available'] == True)]['date_slot_time'])
+    rows = list(df[(df['date_slot'].apply(lambda input: input.split(' ')[0]) == desired_date.date)&(df['doctor_name'] == doctor_name)&(df['is_available'] == True)]['date_slot_time'])
 
     if len(rows) == 0:
         output = "No availability in the entire day"
@@ -82,7 +82,7 @@ def check_availability_by_specialization_by_date(desired_date:DateModel, special
     #Dummy data
     df = pd.read_csv(f"availability.csv")
     df['date_slot_time'] = df['date_slot'].apply(lambda input: input.split(' ')[-1])
-    rows = df[(df['date_slot'].apply(lambda input: input.split(' ')[0]) == convert_datetime_format(desired_date.date)) & (df['specialization'] == specialization) & (df['is_available'] == True)].groupby(['specialization', 'doctor_name'])['date_slot_time'].apply(list).reset_index(name='available_slots')
+    rows = df[(df['date_slot'].apply(lambda input: input.split(' ')[0]) == desired_date.date) & (df['specialization'] == specialization) & (df['is_available'] == True)].groupby(['specialization', 'doctor_name'])['date_slot_time'].apply(list).reset_index(name='available_slots')
 
     if len(rows) == 0:
         output = "No availability in the entire day"
