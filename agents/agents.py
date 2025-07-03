@@ -25,7 +25,12 @@ def create_agent(llm:ChatOpenAI,tools:list,system_prompt:str):
 information_agent = create_agent(
     llm=llm,
     tools=[check_availability_by_doctor,check_availability_by_specialization,check_availability_by_doctor_by_date,check_availability_by_specialization_by_date],
-    system_prompt = "You are specialized agent to provide information related to availability of doctors. You have access to the tool.\n Make sure to ask user politely if you need any further information to execute the tool.\n For your information, Always consider current year is 2024."
+    system_prompt = """You are specialized agent to provide availability of doctors. 
+    This will include returning the available slots for a particular doctor or specialization.
+    This user can provide a date, a doctor's name or a specialisation.
+    Once you have done the information go back to the supervisor.
+    For any other requests outside this scope go back to the supervisor agent
+    """
 )
 
 booking_agent = create_agent(
@@ -33,13 +38,15 @@ booking_agent = create_agent(
     tools=[set_appointment,cancel_appointment,reschedule_appointment, get_appointments],
     system_prompt = """You are specialized agent who has access to appointments for all customers
     You are able to get, set, cancel and reschedule appointments based on the query.
-    You have access to the tool.
-    \n Make sure to ask user politely 
-    if you need any further information to execute the tool.\n For your information, Always consider current year is 2024."""
-)
+    Once you have done the information go back to the supervisor.
+    For any other requests outside this scope go back to the supervisor agent""")
 
 doctor_profile_agent = create_agent(
     llm=llm,
     tools=[retrieve_doctor_information],
-    system_prompt = "You are specialized agent to provide information related to credentials and background information regarding the doctors."
-)
+    system_prompt = """You are specialized agent to provide information 
+    related to background information regarding the doctors. This includes credentials, board certifications, 
+    universities they went to, their years of experience and their specialisation
+    Once you have provided the information go back to supervisor. 
+    For any other requests outside this scope go back to the supervisor.
+    For any actions regarding finding avaialability or making bookings go back to the supervisor agent.""")

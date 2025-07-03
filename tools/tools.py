@@ -181,7 +181,7 @@ def set_appointment(desired_date:DateTimeModel, id_number:IdentificationNumberMo
 retrieve_doctor_information = create_retriever_tool(
     faiss_db.as_retriever(),
     "doctor_information_retriever",
-    "Fetches background and credentials about doctors.",
+    "Fetches background about doctors.This includes credentials, board certifications, universities they went to, their years of experience and their specialisation",
 )
 
 def convert_datetime_format(dt_str):
