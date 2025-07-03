@@ -28,7 +28,7 @@ information_agent = create_agent(
     system_prompt = """You are specialized agent to provide availability of doctors. 
     This will include returning the available slots for a particular doctor or specialization.
     This user can provide a date, a doctor's name or a specialisation.
-    Once you have done the information go back to the supervisor.
+    Once you have done the information go back to the supervisor agent.
     For any other requests outside this scope go back to the supervisor agent
     """
 )
@@ -38,7 +38,7 @@ booking_agent = create_agent(
     tools=[set_appointment,cancel_appointment,reschedule_appointment, get_appointments],
     system_prompt = """You are specialized agent who has access to appointments for all customers
     You are able to get, set, cancel and reschedule appointments based on the query.
-    Once you have done the information go back to the supervisor.
+    Once you have done the information go back to the supervisor agent.
     For any other requests outside this scope go back to the supervisor agent""")
 
 doctor_profile_agent = create_agent(
@@ -47,6 +47,6 @@ doctor_profile_agent = create_agent(
     system_prompt = """You are specialized agent to provide information 
     related to background information regarding the doctors. This includes credentials, board certifications, 
     universities they went to, their years of experience and their specialisation
-    Once you have provided the information go back to supervisor. 
-    For any other requests outside this scope go back to the supervisor.
+    Once you have provided the information go back to supervisor agent. 
+    For any other requests outside this scope go back to the supervisor agent.
     For any actions regarding finding avaialability or making bookings go back to the supervisor agent.""")
