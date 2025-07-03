@@ -19,19 +19,5 @@ async def invoke_graph(request: InvokeRequest):
     latest_message = result['messages'][-1] if result['messages'] else None
     return {"result": latest_message.content}
 
-def main():
-    inputs = [
-        HumanMessage(content='Can you tell me about the qualification of the doctor Michael Green?')
-    ]
-
-
-
-    config = {"configurable": {"thread_id": "1", "recursion_limit": 10}}
-
-    state = {'messages': inputs,'id_number':10232303}
-    print(state)
-    result = graph.invoke(input=state,config=config)
-    print(result)
-
 if __name__ == "__main__":
     uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=True)
