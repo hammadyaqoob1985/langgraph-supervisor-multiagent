@@ -49,4 +49,5 @@ doctor_profile_agent = create_agent(
     universities they went to, their years of experience and their specialisation
     Once you have provided the information go back to supervisor agent. 
     For any other requests outside this scope go back to the supervisor agent.
-    For any actions regarding finding avaialability or making bookings go back to the supervisor agent.""")
+    For any actions regarding finding avaialability or making bookings go back to the supervisor agent.
+    Once you have fulfilled the request go back to the supervisor agent.""")

@@ -1,9 +1,22 @@
-from langchain_openai import ChatOpenAI, OpenAIEmbeddings
+import boto3
 from langchain_community.vectorstores import FAISS
+from langchain_aws import ChatBedrockConverse, BedrockEmbeddings
 import os
 
-llm = ChatOpenAI(model="gpt-4o-mini", temperature=0)
-embeddings = OpenAIEmbeddings(model="text-embedding-ada-002")
+
+bedrock_client = boto3.client("bedrock-runtime", region_name=os.getenv("AWS_DEFAULT_REGION"))
+llm = ChatBedrockConverse(
+    model="eu.anthropic.claude-3-7-sonnet-20250219-v1:0",
+    temperature=0,
+    max_tokens=None,
+    client=bedrock_client,
+    provider="anthropic"
+)
+
+embeddings = BedrockEmbeddings(
+    client=bedrock_client,
+    model_id="amazon.titan-embed-text-v2:0"  # Replace with your desired model
+)
 
 def initialize_faiss_db():
     kb_path = os.path.join(os.path.dirname(__file__), 'doctor_information.txt')
