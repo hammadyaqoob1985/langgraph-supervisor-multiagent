@@ -7,8 +7,8 @@ This project implements a multi-agent system using LangGraph, designed to coordi
 - Uses a supervisor agent to manage and delegate tasks among agents.
 - Employs a graph-based workflow to define and control agent interactions.
 - Provides an example scenario for managing doctor availability and scheduling in a healthcare context.
-- Uses gpt-4o-mini as llm model
-- Uses text-embedding-ada-002 as embeddings model
+- Uses claude sonnet 3.7 as llm model
+- Uses amazon.titan-embed-text-v2:0 as embeddings model
 - Uses FAISS as vector database to store and retrieve information about doctors
 - Uses FastAPI to expose the agents as a web service
 
@@ -39,6 +39,7 @@ Each agent in the system has a specific role:
 ### Prerequisites
 - Python 3.10+
 - Recommended: Create a virtual environment
+- AWS account with access to bedrock base models (https://docs.aws.amazon.com/bedrock/latest/userguide/model-access.html)
 
 
 ### Installation
@@ -64,6 +65,8 @@ Each agent in the system has a specific role:
    - LANGSMITH_ENDPOINT="https://api.smith.langchain.com"
    - LANGSMITH_API_KEY= "LANGSMITH API KEY"
    - LANGSMITH_PROJECT=langgraph-supervisor-multiagent
+   - AWS_ACCESS_KEY_ID="AWS_ACCESS_KEY_ID"
+   - AWS_SECRET_ACCESS_KEY="AWS_SECRET_ACCESS_KEY"
 
 ## Diagram
 
