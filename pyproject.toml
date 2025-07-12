@@ -1,0 +1,16 @@
+[project]
+name = "langgraph-supervisor-multiagent"
+version = "0.1.0"
+description = "This project implements a multi-agent system using LangGraph, designed to coordinate and supervise multiple agents for complex task execution. The system is modular, extensible, and leverages a graph-based approach to manage agent interactions and workflows."
+authors = [
+    {name = "hammadyaqoob1985",email = "hammad.yaqoob1985@yahoo.co.uk"}
+]
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+]
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
