@@ -4,9 +4,9 @@ from langchain_core.messages import AIMessage, HumanMessage
 from langgraph.constants import END
 from langgraph.types import Command
 
-from agents.AgentState import GraphState
-from agents.agents import information_agent, booking_agent, doctor_profile_agent
-from config.config import llm
+from app.agents.AgentState import GraphState
+from app.agents.agents import information_agent, booking_agent, doctor_profile_agent
+from app.config.config import llm
 
 members_dict = {'information_node':'specialized agent to provide information related to availability of doctors.\n Make sure to ask user politely if you need any further information to execute the tool.'
     ,'booking_node':'specialized agent to only to book, cancel, reschedule or get appointments given a user id'

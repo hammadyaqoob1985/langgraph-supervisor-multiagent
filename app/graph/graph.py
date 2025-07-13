@@ -2,8 +2,8 @@ from langgraph.checkpoint.memory import MemorySaver
 from langgraph.constants import START
 from langgraph.graph import StateGraph
 
-from agents.AgentState import GraphState
-from nodes.nodes import supervisor_node, information_node, booking_node, doctor_profile_node
+from app.agents.AgentState import GraphState
+from app.nodes.nodes import supervisor_node, information_node, booking_node, doctor_profile_node
 
 builder = StateGraph(GraphState)
 memory = MemorySaver()

@@ -1,9 +1,14 @@
-from fastapi import FastAPI, Request
+import os
+
+from fastapi import FastAPI
+from fastapi.responses import RedirectResponse
 from pydantic import BaseModel
 from langchain_core.messages import HumanMessage
-from graph.graph import graph
+from app.graph.graph import graph
 import uvicorn
+from dotenv import load_dotenv
 
+load_dotenv()
 app = FastAPI()
 
 class InvokeRequest(BaseModel):
@@ -11,6 +16,9 @@ class InvokeRequest(BaseModel):
     id_number: int
     conversation_id: int
 
+@app.get("/")
+async def redirect_root_to_docs():
+    return RedirectResponse("/docs")
 @app.post("/invoke")
 async def invoke_graph(request: InvokeRequest):
     inputs = [HumanMessage(content=request.message)]

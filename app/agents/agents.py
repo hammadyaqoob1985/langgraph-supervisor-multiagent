@@ -3,8 +3,8 @@ from langchain_openai import ChatOpenAI
 from langgraph.prebuilt import create_react_agent
 
 
-from config.config import llm
-from tools.tools import check_availability_by_doctor, check_availability_by_specialization, set_appointment, \
+from app.config.config import llm
+from app.tools.tools import check_availability_by_doctor, check_availability_by_specialization, set_appointment, \
     cancel_appointment, reschedule_appointment, retrieve_doctor_information, check_availability_by_doctor_by_date, \
     check_availability_by_specialization_by_date, get_appointments
 

@@ -4,8 +4,8 @@ from typing import Literal
 import pandas as pd
 from langchain_core.tools import tool, create_retriever_tool
 
-from config.config import faiss_db
-from model.schema import DateModel, DateTimeModel, IdentificationNumberModel
+from app.config.config import faiss_db
+from app.model.schema import DateModel, DateTimeModel, IdentificationNumberModel
 from datetime import datetime
 
 @tool
@@ -115,7 +115,7 @@ def get_appointments(id_number:IdentificationNumberModel):
     The parameters MUST be mentioned by the user in the query.
     """
     #Dummy data
-    df = pd.read_csv(f'availability.csv')
+    df = pd.read_csv(f'app/availability.csv')
     bookings = df[(df['patient_to_attend'] == id_number.id)]
     if len(bookings) == 0:
         return "Not bookings found"
